@@ -52,14 +52,37 @@
             color: #111;
             box-shadow: 0 0 20px #ff0000;
         }
+        .minefield {
+            display: grid;
+            grid-template-columns: repeat(5, 50px);
+            grid-gap: 5px;
+            margin: 20px auto;
+            width: 275px;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            background-color: #222;
+            border: 2px solid #555;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .cell:hover {
+            background-color: #444;
+        }
+        .mine {
+            background-color: red !important;
+            box-shadow: 0 0 10px red;
+        }
     </style>
 </head>
 <body>
-    <a href="adres.html" class="top-right-button">Wyślij tu pieniądze</a>
+    <a href="ALLDAYCASH.html" class="top-right-button">Wyślij tu pieniądze</a>
     <div class="container">
         <h1>Witaj w neonowym świecie!</h1>
-        <button class="neon-button" onclick="showRandomMessage()">Losuj Liczbe</button>
+        <button class="neon-button" onclick="showRandomMessage()">Losuj Liczbę</button>
         <p class="result" id="result"></p>
+        <div class="minefield" id="minefield"></div>
     </div>
     <script>
         function showRandomMessage() {
@@ -70,10 +93,65 @@
                 "Twoja przyszłość jest świetlista!",
                 "Zrób krok w nieznane i zobacz, co się stanie!"
             ];
-            
             const randomIndex = Math.floor(Math.random() * messages.length);
             document.getElementById("result").innerText = messages[randomIndex];
         }
+
+        function createMinefield() {
+            const minefield = document.getElementById("minefield");
+            minefield.innerHTML = "";
+            let mines = new Set();
+            while (mines.size < 5) {
+                mines.add(Math.floor(Math.random() * 25));
+            }
+            for (let i = 0; i < 25; i++) {
+                let cell = document.createElement("div");
+                cell.classList.add("cell");
+                cell.dataset.index = i;
+                cell.addEventListener("click", function() {
+                    if (mines.has(i)) {
+                        cell.classList.add("mine");
+                        alert("BOOM! Trafiłeś na minę!");
+                    } else {
+                        cell.style.backgroundColor = "#0f0";
+                    }
+                });
+                minefield.appendChild(cell);
+            }
+        }
+        createMinefield();
     </script>
+</body>
+</html>
+
+<!-- Druga strona -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALLDAYCASH</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .address {
+            font-size: 24px;
+            color: #ffcc00;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WYŚLIJ TU PIENIĄDZE</h1>
+        <p class="address">Adres: ALLDAYCASH</p>
+    </div>
 </body>
 </html>
