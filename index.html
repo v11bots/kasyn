@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neonowa Strona</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .neon-button {
+            background-color: transparent;
+            border: 2px solid #ffcc00;
+            color: #ffcc00;
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+        .neon-button:hover {
+            background-color: #ffcc00;
+            color: #111;
+            box-shadow: 0 0 20px #ffcc00;
+        }
+        .result {
+            font-size: 28px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Witaj w neonowym świecie!</h1>
+        <button class="neon-button" onclick="showRandomMessage()">Losuj Cytat</button>
+        <p class="result" id="result"></p>
+    </div>
+    <script>
+        function showRandomMessage() {
+            const messages = [
+                "Szczęście sprzyja odważnym!",
+                "Każdy dzień to nowa szansa!",
+                "Życie to gra, w której warto ryzykować!",
+                "Twoja przyszłość jest świetlista!",
+                "Zrób krok w nieznane i zobacz, co się stanie!"
+            ];
+            
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById("result").innerText = messages[randomIndex];
+        }
+    </script>
+</body>
+</html>
 
