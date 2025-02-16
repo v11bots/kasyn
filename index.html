@@ -155,3 +155,69 @@
     </div>
 </body>
 </html>
+<!-- Ruletka -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Ruletka</title>
+</head>
+<body>
+    <h1>Ruletka</h1>
+    <button onclick="spinRoulette()">Zakręć</button>
+    <p id="roulette-result"></p>
+    <script>
+        function spinRoulette() {
+            const result = Math.floor(Math.random() * 36);
+            document.getElementById("roulette-result").innerText = "Wylosowano: " + result;
+        }
+    </script>
+</body>
+</html>
+
+<!-- Miny -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Miny</title>
+</head>
+<body>
+    <h1>Miny</h1>
+    <label for="saldo">Saldo:</label>
+    <input type="number" id="saldo" value="100">
+    <button onclick="startGame()">Graj</button>
+    <p id="miny-result"></p>
+    <script>
+        function startGame() {
+            let saldo = document.getElementById("saldo").value;
+            const result = Math.random() < 0.5 ? "Wygrałeś!" : "Przegrałeś!";
+            document.getElementById("miny-result").innerText = result;
+        }
+    </script>
+</body>
+</html>
+
+<!-- Keno -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Keno</title>
+</head>
+<body>
+    <h1>Keno</h1>
+    <button onclick="drawKeno()">Losuj</button>
+    <p id="keno-result"></p>
+    <script>
+        function drawKeno() {
+            let numbers = [];
+            while (numbers.length < 10) {
+                let num = Math.floor(Math.random() * 80) + 1;
+                if (!numbers.includes(num)) numbers.push(num);
+            }
+            document.getElementById("keno-result").innerText = "Wylosowane liczby: " + numbers.join(", ");
+        }
+    </script>
+</body>
+</html>
